@@ -6,3 +6,20 @@
 .App > div {
   margin-right: 50px;
 }
+
+.error {
+  color: red;
+}
+
+.errorInput {
+  border: 1px solid red;
+}
+
+.activeButton {
+  background-color: aquamarine;
+}
+
+.isDone {
+  color: dimgray;
+  text-decoration: line-through;
+}
