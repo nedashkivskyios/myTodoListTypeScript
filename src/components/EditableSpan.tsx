@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useState} from 'react';
+import {TextField} from "@material-ui/core";
 
 type PropsType = {
   title: string
@@ -20,11 +21,18 @@ export const EditableSpan: React.FC<PropsType> = (props) => {
   }
   if (editMode) {
     return (
-      <input onChange={onChangeHandler}
-             value={text}
-             onBlur={onBlurHandler}
-             type="text"
-             autoFocus
+      <TextField variant={'outlined'}
+                 onChange={onChangeHandler}
+                 value={text}
+                 onBlur={onBlurHandler}
+                 type="text"
+                 autoFocus
+                 onKeyPress={(e) => {
+                   if (e.ctrlKey && e.charCode === 13) {
+                     props.onChange(text)
+                     setEditMode(false)
+                   }
+                 }}
       />
     )
   } else {
